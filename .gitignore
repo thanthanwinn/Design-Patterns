@@ -24,3 +24,7 @@ TestResults.xml
  
 .classpath
 .project
+bin/
+target/
+*.class
+
