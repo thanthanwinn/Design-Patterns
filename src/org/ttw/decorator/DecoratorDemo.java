@@ -9,11 +9,8 @@ public class DecoratorDemo {
         PaymentProcessor paymentProcessor = new CBPaymentProcessor();
         CardChargeGateway cardChargeGateway = new CardChargeGateway();
         PaymentProcessor cardChangeGatewayAdaptor = new CardChangeGatewayAdaptor(cardChargeGateway,paymentProcessor);
-
         PaymentProcessor retryPaymentProcessor = new RetryPaymentProcessor(cardChangeGatewayAdaptor);
-
         PaymentProcessor logger = new PaymentProcessLogger(retryPaymentProcessor);
-
         logger.process("token",500.0f,false);
     }
 }
