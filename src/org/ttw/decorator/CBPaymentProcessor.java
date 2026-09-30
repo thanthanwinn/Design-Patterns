@@ -4,7 +4,7 @@ public class CBPaymentProcessor implements PaymentProcessor{
     private int callCount = 0;
 
     @Override
-    public void process() {
+    public void process(String token, Float amount , boolean charged) {
         callCount++;
         if (callCount == 1) {
             throw new RuntimeException("failed on first attempt");

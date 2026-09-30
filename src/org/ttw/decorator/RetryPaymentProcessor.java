@@ -8,13 +8,17 @@ public class RetryPaymentProcessor implements PaymentProcessor{
 
 
     @Override
-    public void process() {
+    public void process(String token, Float amount, boolean charged) {
         int maxAttempts = 3;
+        boolean cardCharge = charged;
         for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+            if (attempt > 1){
+                cardCharge = true;
+            }
             try {
-                paymentProcessor.process();
+                paymentProcessor.process(token,amount,cardCharge);
                 System.out.println("succeeded on attempt " + attempt);
-                return; // success — stop retrying
+                return;
             } catch (Exception e) {
                 System.out.println("attempt " + attempt + " failed");
                 if (attempt == maxAttempts) {

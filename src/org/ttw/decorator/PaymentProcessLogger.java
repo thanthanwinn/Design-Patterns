@@ -6,9 +6,9 @@ public class PaymentProcessLogger implements PaymentProcessor{
         this.paymentProcessor = paymentProcessor;
     }
 
-    public void process(){
+    public void process(String token, Float amount, boolean charged){
         System.out.println("before payment processing");
-        paymentProcessor.process();
+        paymentProcessor.process(token,amount,charged);
         System.out.println("after payment processing");
     }
 
