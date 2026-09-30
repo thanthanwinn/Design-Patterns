@@ -19,6 +19,8 @@ rad.json
 #License-files
 *.bclicense
 *.flf
+.idea
+Design-Patterns.iml
 #Test results file
 TestResults.xml
  
