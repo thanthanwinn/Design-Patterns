@@ -37,16 +37,20 @@ public class User {
         private String password;
         private int age;
 
-        public static Builder builder(){
+        private static Builder builder(){
             return new Builder();
+        }
+
+        public static Builder builder(String username, String password){
+            return builder().username(username).password(password);
         }
         public Builder username(String username){
             this.username = username;
             return  this;
 
         }
-        public Builder addresss(String addresss){
-            this.address = addresss;
+        public Builder address(String address){
+            this.address = address;
             return  this;
         }
         public Builder password(String  password){
@@ -58,9 +62,6 @@ public class User {
             return  this;
         }
         public User build(){
-            if (username == null || password == null) {
-                throw new IllegalStateException("username and password are required");
-            }
             return  new User(this.username,this.address,this.password,this.age);
         }
 
